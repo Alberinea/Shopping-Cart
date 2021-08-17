@@ -1,0 +1,28 @@
+.header > h2 {
+  margin: 0;
+}
+
+.header > nav {
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  height: 80px;
+  justify-content: space-around;
+  background-color: rgb(26, 24, 24);
+  position: sticky;
+}
+
+.nav {
+  margin: 0 20px;
+}
+
+.white {
+  color: white;
+  text-decoration: none;
+}
