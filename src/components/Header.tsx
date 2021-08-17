@@ -7,10 +7,10 @@ const Header = (): JSX.Element => {
       <h2>PAYSTORE</h2>
       <nav className="flex">
         <Link className="nav white" to="/">
-          <p>Home</p>
+          Home
         </Link>
         <Link className="nav white" to="/store">
-          <p>Store</p>
+          Store
         </Link>
       </nav>
     </header>

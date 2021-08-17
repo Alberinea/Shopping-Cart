@@ -1,2 +1,77 @@
+main,
+.new-games-container,
+.side {
+  display: flex;
+}
 
+main {
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  flex-direction: column;
+}
 
+main > h3 {
+  padding-right: 980px;
+  padding-bottom: 10px;
+}
+
+.new-games-container {
+  height: 600px;
+  width: 1200px;
+  background-color: rgb(31, 30, 29);
+}
+
+.side {
+  flex: 1;
+  flex-direction: column;
+}
+
+.side > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.side > div > img {
+  padding: 0 20px;
+  height: 80px;
+  width: 60px;
+}
+
+.side > div:hover {
+  background-color: rgb(75, 74, 72);
+}
+
+.focus {
+  background-color: rgb(75, 74, 72);
+}
+
+.link {
+  position: absolute;
+  bottom: 0;
+  margin: 40px;
+  height: 50px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 151, 252);
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link:hover {
+  background-color: rgb(85, 173, 231);
+}
+
+.show {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 80%;
+  position: relative;
+}
