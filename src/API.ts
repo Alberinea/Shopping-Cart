@@ -8,7 +8,6 @@ export interface NewGame {
     image_id: string;
   };
   name: string;
-  summary: string;
   id: string;
   artworks: {
     image_id: string;
@@ -17,7 +16,7 @@ export interface NewGame {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export async function getNewGames(): Promise<NewGame[]> {
+async function getGameData(params: string): Promise<NewGame[]> {
   const data = await (
     await fetch(END_POINT, {
       method: 'POST',
@@ -25,9 +24,11 @@ export async function getNewGames(): Promise<NewGame[]> {
         'Client-ID': TWITCH_CLIENT_ID,
         Authorization: ACCESS_TOKEN,
       },
-      body: 'fields cover.image_id,name,id,artworks.*,slug; where rating >= 80 & rating_count >= 5 & first_release_date > 1609426800; limit 6; sort first_release_date desc;',
+      body: params,
     })
   ).json();
 
   return data;
 }
+
+export default getGameData;

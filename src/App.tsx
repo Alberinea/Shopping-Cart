@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './components/Header';
-import { getNewGames, NewGame } from './API';
+import getGameData, { NewGame } from './API';
 import './styles/App.css';
 
 const App = (): JSX.Element => {
@@ -10,7 +10,9 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     async function fetchNewGames() {
-      const data = await getNewGames();
+      const params =
+        'fields cover.image_id,name,id,artworks.*,slug; where rating >= 80 & rating_count >= 5 & first_release_date > 1609426800; limit 6; sort first_release_date desc;';
+      const data = await getGameData(params);
       setNewGames(data);
     }
     fetchNewGames();
