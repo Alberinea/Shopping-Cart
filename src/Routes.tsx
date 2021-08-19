@@ -1,7 +1,7 @@
 import { BrowserRouter as Browser, Switch, Route } from 'react-router-dom';
 import App from './App';
 import Store from './Store';
-import Items from './components/Items';
+import Items from './Items';
 
 const Routes = (): JSX.Element => {
   return (

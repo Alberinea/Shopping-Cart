@@ -4,7 +4,9 @@ import '../styles/Header.css';
 const Header = (): JSX.Element => {
   return (
     <header className="header flex white">
-      <h2>PAYSTORE</h2>
+      <Link className="white big" to="/">
+        PAYSTORE
+      </Link>
       <nav className="flex">
         <Link className="nav white" to="/">
           Home

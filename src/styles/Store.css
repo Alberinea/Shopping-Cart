@@ -1,5 +1,5 @@
 .search {
-  width: 400px;
+  width: 450px;
   height: 80px;
   border: 1px solid white;
 }
@@ -10,11 +10,51 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 100px;
-  background-color: rgb(223, 43, 43);
 }
 
 .items {
-  width: 450px;
-  height: 600px;
+  width: 360px;
+  height: 570px;
   margin: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  margin: 50px 80px;
+  background-color: rgb(31, 30, 29);
+}
+
+.items:hover {
+  background-color: rgb(75, 74, 72);
+}
+
+.items-image {
+  height: 420px;
+  width: 360px;
+}
+
+.description {
+  flex: 1 1;
+  width: 360px;
+}
+
+.name {
+  padding: 20px;
+}
+
+.genres {
+  padding: 0 0 0 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description > p, h4 {
+  margin: 0;
+}
+
+.price {
+  padding-left: 260px;
 }

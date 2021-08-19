@@ -13,6 +13,9 @@ export interface NewGame {
     image_id: string;
   }[];
   slug: string;
+  genres: {
+    name: string;
+  }[];
 }
 
 // eslint-disable-next-line import/prefer-default-export

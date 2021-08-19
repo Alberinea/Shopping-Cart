@@ -19,7 +19,7 @@
   position: sticky;
 }
 
-.header > * {
+.header > nav {
   padding: 0 40px;
 }
 
@@ -35,4 +35,10 @@
 .white {
   color: white;
   text-decoration: none;
+}
+
+.big {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0 40px;
 }
