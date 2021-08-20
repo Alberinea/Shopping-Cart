@@ -1,29 +1,35 @@
 /* eslint-disable no-nested-ternary */
 import { useEffect, useState } from 'react';
-import Header from './components/Header';
+import produce from 'immer';
+import Header, { Inventory } from './components/Header';
 import getGameData, { NewGame } from './API';
 import './styles/Item.css';
 
-interface Match {
+interface Props {
   match: {
     params: {
       id: string;
     };
   };
+  inventory: Inventory[];
+  setInventory: React.Dispatch<React.SetStateAction<Inventory[]>>;
 }
 
-const Items: React.FC<Match> = ({ match }): JSX.Element => {
+const Items: React.FC<Props> = ({
+  match,
+  inventory,
+  setInventory,
+}): JSX.Element => {
   const [item, setItem] = useState<NewGame[]>([]);
   const [loading, setLoading] = useState(true);
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     async function fetchItem() {
-      const params = `fields artworks.image_id,name,genres.name,screenshots.*,release_dates.human,storyline,platforms.abbreviation,aggregated_rating; where slug = "${match.params.id}"; limit 1;`;
+      const params = `fields cover.image_id,name,slug,genres.name,screenshots.*,release_dates.human,storyline,summary,platforms.abbreviation,aggregated_rating; where slug = "${match.params.id}"; limit 1;`;
       const data = await getGameData(params);
       setItem(data);
       setLoading(false);
-      console.log(data);
     }
     fetchItem();
   }, [match.params.id]);
@@ -40,7 +46,7 @@ const Items: React.FC<Match> = ({ match }): JSX.Element => {
 
   return (
     <>
-      <Header />
+      <Header inventory={inventory} setInventory={setInventory} />
       {item.length > 0 ? (
         <main>
           <div className="main-container top">
@@ -58,9 +64,9 @@ const Items: React.FC<Match> = ({ match }): JSX.Element => {
                     onKeyPress={() => setCounter(i)}
                     role="menuitem"
                     tabIndex={i}
+                    key={arg.id}
                   >
                     <img
-                      key={arg.id}
                       src={`https://images.igdb.com/igdb/image/upload/t_screenshot_med/${arg.image_id}.jpg`}
                       alt="Screenshot"
                       className={
@@ -80,7 +86,7 @@ const Items: React.FC<Match> = ({ match }): JSX.Element => {
             </div>
             <div className="side-container">
               <img
-                src={`https://images.igdb.com/igdb/image/upload/t_screenshot_big/${item[0].artworks[0].image_id}.jpg`}
+                src={`https://images.igdb.com/igdb/image/upload/t_1080p/${item[0].cover.image_id}.jpg`}
                 alt="Cover"
                 className="side-image"
               />
@@ -109,17 +115,43 @@ const Items: React.FC<Match> = ({ match }): JSX.Element => {
                   : item[0].aggregated_rating}
                 %
               </p>
-              <h2 className="link button">49.99$</h2>
-              <button className="link button" type="button">
+              <h2 className="link button">$49.99</h2>
+              <button
+                className="link button"
+                type="button"
+                onClick={() => {
+                  if (inventory.some(({ name }) => name === item[0].name)) {
+                    const copy = produce(inventory, (draft) => {
+                      const index = inventory.findIndex(
+                        ({ name }) => name === item[0].name
+                      );
+                      const deepCopy = draft;
+                      deepCopy[index].quantity += 1;
+                      const originalPrice = 49.99;
+                      deepCopy[index].price =
+                        originalPrice * deepCopy[index].quantity;
+                    });
+                    setInventory(copy);
+                  } else
+                    setInventory((prev) => [
+                      ...prev,
+                      {
+                        name: item[0].name,
+                        price: 49.99,
+                        imageURL: item[0].cover.image_id,
+                        quantity: 1,
+                        URL: item[0].slug,
+                      },
+                    ]);
+                }}
+              >
                 Add to cart
               </button>
             </div>
           </div>
           <div className="main-container storyline">
-            <p>
-              <h3>About this game:</h3>
-              {item[0].storyline}
-            </p>
+            <h3>About this game:</h3>
+            <p>{item[0].storyline || item[0].summary}</p>
           </div>
         </main>
       ) : item.length === 0 && !loading ? (

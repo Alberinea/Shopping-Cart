@@ -28,9 +28,9 @@ export interface NewGame {
   }[];
   aggregated_rating: number;
   storyline: string;
+  summary: string;
 }
 
-// eslint-disable-next-line import/prefer-default-export
 async function getGameData(params: string): Promise<NewGame[]> {
   const data = await (
     await fetch(END_POINT, {

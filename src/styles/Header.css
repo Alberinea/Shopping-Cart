@@ -4,7 +4,7 @@
 
 .header > nav {
   justify-content: center;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 .flex {
@@ -16,7 +16,9 @@
   height: 80px;
   justify-content: space-between;
   background-color: rgb(26, 24, 24);
-  position: sticky;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
 }
 
 .header > nav {
@@ -41,4 +43,91 @@
   font-weight: bold;
   font-size: 1.5rem;
   margin: 0 40px;
+}
+
+.icon {
+  margin-right: 50px;
+  position: relative;
+}
+
+.history {
+  width: 500px;
+  position: absolute;
+  z-index: 5;
+  right: 0;
+  top:0;
+  margin: 55px 0 0 0;
+  background-color: rgb(27, 26, 26);
+}
+
+.checkout-image {
+  height: 90px;
+  padding: 20px;
+}
+
+.checkout-name {
+  width: 240px;
+  word-wrap: break-word;
+  padding-right: 15px;
+}
+
+.checkout-price {
+  padding-right: 20px;
+  position: absolute;
+  right: 0;
+}
+
+.checkout-summary {
+  background-color: rgb(61, 61, 61);
+  height: 70px;
+  justify-content: space-between;
+}
+
+.summary-left {
+  padding-left: 15px;
+}
+
+.summary-right {
+  margin-right: 15px;
+}
+
+.list {
+  position: relative;
+  z-index: 2;
+}
+
+.list:hover {
+  background-color: rgb(44, 43, 43);
+}
+
+.cart {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.cart:hover {
+  opacity: 1;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.remove {
+  position: absolute;
+  z-index: 5;
+  right: 0;
+  bottom: 0;
+  margin-right: 30px;
+  opacity: 0.5;
+  margin-bottom: 15px;
+}
+
+.remove:hover {
+  color: red;
+  opacity: 0.9;
+}
+
+.remove > p {
+  margin: 0;
 }

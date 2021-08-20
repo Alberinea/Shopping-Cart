@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from './components/Header';
+import Header, { Inventory } from './components/Header';
 import getGameData, { NewGame } from './API';
 import './styles/Store.css';
 
-const Store = (): JSX.Element => {
+interface Props {
+  inventory: Inventory[];
+  setInventory: React.Dispatch<React.SetStateAction<Inventory[]>>;
+}
+
+const Store: React.FC<Props> = ({ inventory, setInventory }): JSX.Element => {
   const [items, setItems] = useState<NewGame[]>([]);
 
   useEffect(() => {
@@ -19,7 +24,7 @@ const Store = (): JSX.Element => {
 
   return (
     <>
-      <Header />
+      <Header inventory={inventory} setInventory={setInventory} />
       <main>
         <div className="search" />
         <div className="itemsContainer">

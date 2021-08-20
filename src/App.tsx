@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from './components/Header';
+import Header, { Inventory } from './components/Header';
 import getGameData, { NewGame } from './API';
 import './styles/App.css';
 
-const App = (): JSX.Element => {
+interface Props {
+  inventory: Inventory[];
+  setInventory: React.Dispatch<React.SetStateAction<Inventory[]>>;
+}
+
+const App: React.FC<Props> = ({ inventory, setInventory }): JSX.Element => {
   const [newGames, setNewGames] = useState<NewGame[]>([]);
   const [counter, setCounter] = useState(0);
 
@@ -30,7 +35,7 @@ const App = (): JSX.Element => {
 
   return (
     <>
-      <Header />
+      <Header inventory={inventory} setInventory={setInventory} />
       <main>
         <h3>Newest Popular Releases</h3>
         <div className="new-games-container">
