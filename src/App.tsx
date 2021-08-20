@@ -11,7 +11,7 @@ const App = (): JSX.Element => {
   useEffect(() => {
     async function fetchNewGames() {
       const params =
-        'fields cover.image_id,name,id,artworks.*,slug; where rating >= 80 & rating_count >= 5 & first_release_date > 1609426800; limit 6; sort first_release_date desc;';
+        'fields cover.image_id,name,id,artworks.image_id,slug; where rating >= 80 & rating_count >= 5 & first_release_date > 1609426800; limit 6; sort first_release_date desc;';
       const data = await getGameData(params);
       setNewGames(data);
     }
@@ -47,14 +47,14 @@ const App = (): JSX.Element => {
             </div>
           )}
           <div className="side">
-            {newGames.map((arg) => (
+            {newGames.map((arg, i) => (
               <div
                 key={arg.id}
-                className={newGames.indexOf(arg) === counter ? 'focus' : ''}
-                onClick={() => setCounter(newGames.indexOf(arg))}
-                onKeyPress={() => setCounter(newGames.indexOf(arg))}
+                className={i === counter ? 'focus' : ''}
+                onClick={() => setCounter(i)}
+                onKeyPress={() => setCounter(i)}
                 role="menuitem"
-                tabIndex={newGames.indexOf(arg)}
+                tabIndex={i}
               >
                 <img
                   src={`https://images.igdb.com/igdb/image/upload/t_cover_small/${arg.cover.image_id}.jpg`}

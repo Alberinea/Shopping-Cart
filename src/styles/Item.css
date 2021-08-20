@@ -1,0 +1,83 @@
+.not-found {
+  text-align: center;
+}
+
+.main-container {
+  width: 1550px;
+}
+
+.top {
+  display: flex;
+  background-color: rgb(27, 27, 27);
+  margin-top: 50px;
+  height: 650px;
+}
+
+.screenshots-container {
+  width: 60%;
+  height: 100%;
+}
+
+.screenshot {
+  width: 100%;
+  height: 75%;
+}
+
+.screenshots-rotation {
+  display: flex;
+  overflow: auto;
+  margin-top: 3px;
+}
+
+.screenshot-small {
+  width: 220px;
+  height: 110px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.side-container {
+  padding-left: 20px;
+  position: relative;
+}
+
+.side-container > p {
+  font-size: 1.25rem;
+}
+
+.side-container > p > span {
+  opacity: 0.5;
+}
+
+.side-container > h2 {
+  padding-right: 120px;
+  background-color: inherit;
+  cursor: inherit;
+}
+
+.side-container > h2:hover {
+  background-color: inherit;
+}
+
+.side-image {
+  width: 600px;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  padding-top: 100px;
+}
+
+.button {
+  border: none;
+  right: 0;
+}
+
+.storyline {
+  padding-top: 20px;
+}
+
+.now {
+  border: 3px solid white;
+}

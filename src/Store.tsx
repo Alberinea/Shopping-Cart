@@ -10,7 +10,7 @@ const Store = (): JSX.Element => {
   useEffect(() => {
     async function fetchStoreData() {
       const params =
-        'fields cover.image_id,name,id,slug,genres.*; where rating >= 80 & rating_count >= 100; limit 30; sort rating_count desc;';
+        'fields cover.image_id,name,id,slug,genres.name; where rating >= 80 & rating_count >= 100; limit 30; sort rating_count desc;';
       const data = await getGameData(params);
       setItems(data);
     }
@@ -23,9 +23,9 @@ const Store = (): JSX.Element => {
       <main>
         <div className="search" />
         <div className="itemsContainer">
-          {items.map((arg) => (
+          {items.map((arg, i) => (
             <Link
-              to={`/store/${items[items.indexOf(arg)]?.slug}`}
+              to={`/store/${items[i]?.slug}`}
               key={arg.id}
               className="items"
             >
@@ -37,10 +37,8 @@ const Store = (): JSX.Element => {
               <div className="description">
                 <h4 className="name">{arg.name}</h4>
                 <p className="genres">
-                  {arg.genres.map((genre) =>
-                    arg.genres.indexOf(genre) === 0
-                      ? ` ${genre.name}`
-                      : ` | ${genre.name} `
+                  {arg.genres.map((genre, index) =>
+                    index === 0 ? ` ${genre.name}` : ` | ${genre.name} `
                   )}
                 </p>
                 <h2 className="price">$ 49.99</h2>

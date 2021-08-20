@@ -16,6 +16,18 @@ export interface NewGame {
   genres: {
     name: string;
   }[];
+  screenshots: {
+    image_id: string;
+    id: string;
+  }[];
+  platforms: {
+    abbreviation: string;
+  }[];
+  release_dates: {
+    human: string;
+  }[];
+  aggregated_rating: number;
+  storyline: string;
 }
 
 // eslint-disable-next-line import/prefer-default-export
