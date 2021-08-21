@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter as Browser, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import App from './App';
 import Store from './Store';
 import Items from './Items';
@@ -9,7 +9,7 @@ const Routes = (): JSX.Element => {
   const [inventory, setInventory] = useState<Inventory[]>([]);
 
   return (
-    <Browser>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path="/" exact>
           <App inventory={inventory} setInventory={setInventory} />
@@ -30,7 +30,7 @@ const Routes = (): JSX.Element => {
           )}
         />
       </Switch>
-    </Browser>
+    </Router>
   );
 };
 
