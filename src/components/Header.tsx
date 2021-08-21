@@ -54,10 +54,15 @@ const Header: React.FC<Props> = ({ inventory, setInventory }): JSX.Element => {
             <div className="summary-left">
               <h3>{inventory.length} items added</h3>
             </div>
-            <div>
+            <div className="flex">
               <h3 className="summary-right">
                 ${inventory.reduce((a, e) => a + e.price, 0).toFixed(2)}
               </h3>
+              {inventory.length > 0 && (
+                <button type="button" className="checkout-button">
+                  Check Out
+                </button>
+              )}
             </div>
           </div>
           {inventory.map((arg, i) => {
@@ -79,7 +84,14 @@ const Header: React.FC<Props> = ({ inventory, setInventory }): JSX.Element => {
                 <h4 className="checkout-price">×{arg.quantity}</h4>
                 <div
                   className="remove"
-                  onKeyPress={() => console.log('a')}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      const copy = [...inventory];
+                      copy.splice(i, 1);
+                      setInventory(copy);
+                    }
+                  }}
                   role="menuitem"
                   tabIndex={-1}
                   onClick={(e) => {

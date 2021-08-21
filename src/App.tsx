@@ -33,6 +33,12 @@ const App: React.FC<Props> = ({ inventory, setInventory }): JSX.Element => {
     };
   }, [counter, newGames.length, newGames]);
 
+  useEffect(() => {
+    newGames.forEach(({ artworks }) => {
+      new Image().src = `https://images.igdb.com/igdb/image/upload/t_screenshot_huge/${artworks[0].image_id}.jpg`;
+    });
+  }, [newGames]);
+
   return (
     <>
       <Header inventory={inventory} setInventory={setInventory} />

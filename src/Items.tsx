@@ -37,12 +37,19 @@ const Items: React.FC<Props> = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setCounter((prev) => prev + 1);
+      console.log(counter);
       if (counter >= item[0].screenshots.length - 1) setCounter(0);
     }, 4000);
     return () => {
       clearInterval(interval);
     };
   }, [counter, item]);
+
+  useEffect(() => {
+    item[0]?.screenshots.forEach((image) => {
+      new Image().src = `https://images.igdb.com/igdb/image/upload/t_720p/${image.image_id}.jpg`;
+    });
+  }, [item]);
 
   return (
     <>
