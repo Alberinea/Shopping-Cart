@@ -9,7 +9,7 @@ const Routes = (): JSX.Element => {
   const [inventory, setInventory] = useState<Inventory[]>([]);
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename="/shopping-cart">
       <Switch>
         <Route path="/" exact>
           <App inventory={inventory} setInventory={setInventory} />
