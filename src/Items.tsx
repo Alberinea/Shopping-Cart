@@ -37,7 +37,6 @@ const Items: React.FC<Props> = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setCounter((prev) => prev + 1);
-      console.log(counter);
       if (counter >= item[0].screenshots.length - 1) setCounter(0);
     }, 4000);
     return () => {

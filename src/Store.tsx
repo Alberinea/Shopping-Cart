@@ -37,7 +37,7 @@ const Store: React.FC<Props> = ({ inventory, setInventory }): JSX.Element => {
           <SearchIcon className="search-icon" />
           <input
             placeholder="Enter a title..."
-            type="text"
+            type="search"
             className="search"
             onKeyUp={(e) => {
               if (e.key === 'Enter') setSearchValue(e.currentTarget.value);
