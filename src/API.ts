@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable camelcase */
-const TWITCH_CLIENT_ID = '7nyuo66bv5rgh251uw77xmstqk8g4g';
-const ACCESS_TOKEN = 'Bearer lji16boycwnbyfww1t1goykar30yb1';
-const END_POINT = 'https://cors.bridged.cc/https://api.igdb.com/v4/games';
+const TWITCH_CLIENT_ID = process.env.CLIENT_ID;
+const { ACCESS_TOKEN } = process.env;
+const END_POINT = process.env.ENDPOINT;
 
 export interface NewGame {
   cover: {
@@ -33,11 +34,11 @@ export interface NewGame {
 
 async function getGameData(params: string): Promise<NewGame[]> {
   const data = await (
-    await fetch(END_POINT, {
+    await fetch(END_POINT!, {
       method: 'POST',
       headers: {
-        'Client-ID': TWITCH_CLIENT_ID,
-        Authorization: ACCESS_TOKEN,
+        'Client-ID': TWITCH_CLIENT_ID!,
+        Authorization: ACCESS_TOKEN!,
       },
       body: params,
     })

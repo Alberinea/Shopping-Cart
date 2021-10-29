@@ -116,10 +116,11 @@ const Items: React.FC<Props> = ({
               </p>
               <p>
                 <span style={{ paddingRight: '72px' }}>Rating:</span>
-                {item[0].aggregated_rating.toString().length > 5
-                  ? item[0].aggregated_rating.toFixed(2)
-                  : item[0].aggregated_rating}
-                %
+                {item[0].aggregated_rating
+                  ? item[0].aggregated_rating?.toString().length > 5
+                    ? `${item[0].aggregated_rating?.toFixed(2)}%`
+                    : `${item[0].aggregated_rating}%`
+                  : 'No Rating'}
               </p>
               <h2 className="link button">$49.99</h2>
               <button

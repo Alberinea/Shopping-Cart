@@ -16,7 +16,7 @@ const App: React.FC<Props> = ({ inventory, setInventory }): JSX.Element => {
   useEffect(() => {
     async function fetchNewGames() {
       const params =
-        'fields cover.image_id,name,id,artworks.image_id,slug; where rating >= 80 & rating_count >= 5 & first_release_date > 1609426800; limit 6; sort first_release_date desc;';
+        'fields cover.image_id,name,id,artworks.image_id,slug; where artworks != null & rating >= 80 & rating_count >= 5 & first_release_date > 1609426800; limit 6; sort first_release_date desc;';
       const data = await getGameData(params);
       setNewGames(data);
     }
