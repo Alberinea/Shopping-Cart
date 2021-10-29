@@ -2,6 +2,8 @@
 
 ## Project: Shopping-Cart
 
+![Screenshot](paystore.png)
+
 A react project built with typescript and utilized react-router-dom to create routes.
 
 Incorporates [IGDB](https://api-docs.igdb.com/) as Third-Party API.
