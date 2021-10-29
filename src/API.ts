@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable camelcase */
-const TWITCH_CLIENT_ID = process.env.CLIENT_ID;
-const { ACCESS_TOKEN } = process.env;
-const END_POINT = process.env.ENDPOINT;
+const TWITCH_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
+const END_POINT = process.env.REACT_APP_ENDPOINT;
 
 export interface NewGame {
   cover: {
