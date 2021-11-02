@@ -24,33 +24,7 @@ If you want to know more about Bridged CC, then head to this [blog](https://blog
 
 ## Installation
 
-Clone the repository:
-
-```bash
-git clone https://github.com/Alberinea/shopping-cart.git
-```
-
-Open the project folder:
-
-```bash
-cd shopping-cart
-```
-
-Install all dependencies:
-
-```bash
-npm i
-```
-
-Run the app in development mode:
-
-```bash
-npm start
-```
-
-It should automatically open the App in your browser.
-
-If that is not the case, open [port3000](http://localhost:3000/).
+This app uses environment variables and is not meant to be installed. Please visit the demo site or view source code to know more about details.
 
 ## Demo
 
